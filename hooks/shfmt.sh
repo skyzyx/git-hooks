@@ -11,4 +11,4 @@ if ! command -v shfmt > /dev/null 2>&1; then
     exit 1
 fi
 
-shfmt -s -w -ln bash -i 4 -ci -sr "$@"
+shfmt "$@"

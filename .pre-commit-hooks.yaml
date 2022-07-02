@@ -1,61 +1,78 @@
 ---
+# - id: circleci-config-validate
+#   name: CircleCI config validation
+#   description: Test if the CircleCI config is well formed.
+#   entry: hooks/circleci-config-validate.sh
+#   language: script
+#   files: ^.circleci/config.yml$
 
-- id: circleci-config-validate
-  name: CircleCI config validation
-  description: Test if the CircleCI config is well formed.
-  entry: hooks/circleci-config-validate.sh
-  language: script
-  files: ^.circleci/config.yml$
+# - id: go-fmt
+#   name: go fmt
+#   description: Runs `go fmt` and asserts no changes are needed.
+#   entry: hooks/go-fmt.sh
+#   language: script
+#   files: \.go$
 
-- id: go-fmt
-  name: go fmt
-  description: Runs `go fmt` and asserts no changes are needed.
-  entry: hooks/go-fmt.sh
-  language: script
-  files: \.go$
+# - id: go-test
+#   name: go test
+#   description: Runs `go test` and asserts no tests are failing.
+#   entry: hooks/go-test.sh
+#   language: script
+#   files: \.go$
 
-- id: go-test
-  name: go test
-  description: Runs `go test` and asserts no tests are failing.
-  entry: hooks/go-test.sh
-  language: script
-  files: \.go$
+# - id: go-mod-tidy
+#   name: go mod tidy
+#   description: Runs `go mod tidy` to ensure `go.mod` matches the project source.
+#   entry: hooks/go-mod-tidy.sh
+#   language: script
+#   files: \.go$
 
-- id: go-mod-tidy
-  name: go mod tidy
-  description: Runs `go mod tidy` to ensure `go.mod` matches the project source.
-  entry: hooks/go-mod-tidy.sh
-  language: script
-  files: \.go$
+# - id: go-generate
+#   name: go generate
+#   description: Runs `go generate` against the projects go files.
+#   entry: hooks/go-generate.sh
+#   language: script
+#   files: \.go$
+#   always_run: true
 
-- id: go-generate
-  name: go generate
-  description: Runs `go generate` against the projects go files.
-  entry: hooks/go-generate.sh
-  language: script
-  files: \.go$
-  always_run: true
-
-- id: forbid-binary
-  name: Forbid binaries
-  description: Forbid binary files from being committed
-  entry: hooks/forbid-binary.sh
-  language: script
-  types: ['binary']
+# - id: forbid-binary
+#   name: Forbid binaries
+#   description: Forbid binary files from being committed
+#   entry: hooks/forbid-binary.sh
+#   language: script
+#   types: ['binary']
 
 - id: shellcheck
-  name: Test shell scripts with shellcheck
-  description: Shell scripts conform to shellcheck
-  entry: hooks/shellcheck.sh
+  name: Test shell scripts with ShellCheck
   language: script
+  entry: hooks/shellcheck.sh
   types: [shell]
   exclude_types: [csh, perl, python, ruby, tcsh, zsh]
-  args: [-e, SC1091]
+  args:
+    - -e
+    - SC1091
 
 - id: shfmt
-  name: Check shell style with shfmt
+  name: Format shell scripts with shfmt
   language: script
   entry: hooks/shfmt.sh
   types: [shell]
   exclude_types: [csh, perl, python, ruby, tcsh, zsh]
-  args: ['-l', '-i', '2', '-ci']
+  args:
+    - -s
+    - -w
+    - -ln
+    - bash
+    - -i
+    - 4
+    - -ci
+    - -sr
+
+- id: yapf
+  name: Format Python code with yapf
+  language: python
+  entry: hooks/yapf.sh
+  types: [python]
+  args:
+    - --in-place
+    - --recursive

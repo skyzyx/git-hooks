@@ -11,4 +11,4 @@ if ! command -v yapf > /dev/null 2>&1; then
     exit 1
 fi
 
-yapf --in-place --recursive "$0"
+yapf "$0"
