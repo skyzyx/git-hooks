@@ -88,9 +88,21 @@
     - -ci
     - -sr
 
+- id: yamllint
+  name: Format YAML code with yamllint
+  description: Reformat YAML files according to the standard format.
+  language: python
+  entry: yamllint
+  require_serial: false
+  types: [file, yaml]
+  args:
+    - --format
+    - parsable
+    - --strict
+
 - id: yapf
   name: Format Python code with yapf
-  description: Reformat the Python according to the standard format defined in .style.yapf.
+  description: Reformat Python code according to the standard format defined in .style.yapf.
   language: python
   entry: yapf
   require_serial: false
