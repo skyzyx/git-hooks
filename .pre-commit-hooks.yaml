@@ -46,6 +46,7 @@
   name: Test shell scripts with ShellCheck
   language: script
   entry: hooks/shellcheck.sh
+  require_serial: false
   types: [shell]
   exclude_types: [csh, perl, python, ruby, tcsh, zsh]
   files: \.sh$
@@ -57,6 +58,7 @@
   name: Format shell scripts with shfmt
   language: script
   entry: hooks/shfmt.sh
+  require_serial: false
   types: [shell]
   exclude_types: [csh, perl, python, ruby, tcsh, zsh]
   files: \.sh$
@@ -74,6 +76,7 @@
   name: Format Python code with yapf
   language: python
   entry: hooks/yapf.sh
+  require_serial: false
   types: [python]
   files: \.py$
   args:
