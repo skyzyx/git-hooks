@@ -42,8 +42,23 @@
 #   language: script
 #   types: ['binary']
 
+- id: git-check
+  name: Check for conflict markers and core.whitespace errors
+  description: Use Git to check for conflict markers and core.whitespace errors, respecting .gitattributes.
+  language: script
+  entry: hooks/git-check.sh
+  require_serial: false
+
+- id: script-must-have-extension
+  name: Shell script filename ends in .sh
+  description: Verifies that shell script filenames ends in .sh.
+  language: script
+  entry: hooks/script_must_have_extension.sh
+  types: [shell]
+
 - id: shellcheck
   name: Test shell scripts with ShellCheck
+  description: Run ShellCheck over the file to identify poor practices or potential problems.
   language: script
   entry: hooks/shellcheck.sh
   require_serial: false
@@ -56,6 +71,7 @@
 
 - id: shfmt
   name: Format shell scripts with shfmt
+  description: Reformat the shell scripts according to the standard format.
   language: script
   entry: hooks/shfmt.sh
   require_serial: false
@@ -74,6 +90,7 @@
 
 - id: yapf
   name: Format Python code with yapf
+  description: Reformat the Python according to the standard format defined in .style.yapf.
   language: python
   entry: yapf
   require_serial: false
