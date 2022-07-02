@@ -75,7 +75,7 @@
 - id: yapf
   name: Format Python code with yapf
   language: python
-  entry: hooks/yapf.sh
+  entry: yapf
   require_serial: false
   types: [python]
   files: \.py$
