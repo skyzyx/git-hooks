@@ -48,6 +48,7 @@
   entry: hooks/shellcheck.sh
   types: [shell]
   exclude_types: [csh, perl, python, ruby, tcsh, zsh]
+  files: \.sh$
   args:
     - -e
     - SC1091
@@ -58,6 +59,7 @@
   entry: hooks/shfmt.sh
   types: [shell]
   exclude_types: [csh, perl, python, ruby, tcsh, zsh]
+  files: \.sh$
   args:
     - -s
     - -w
@@ -73,6 +75,7 @@
   language: python
   entry: hooks/yapf.sh
   types: [python]
+  files: \.py$
   args:
     - --in-place
     - --recursive
