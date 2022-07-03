@@ -25,4 +25,4 @@ fi
 # 2. Find the directories of each of the .go files.
 # 3. Run golangci-lint on each of the directories.
 # 4. But only process a directory once.
-find "$PWD" -type f -name "*.go" -print0 | xargs -0 -I% dirname "%" | uniq | xargs -0 -I% bash -c 'cd "%" && golangci-lint run --fix *.go'
+find "$PWD" -type f -name "*.go" -print0 | xargs -0 -I% dirname "%" | uniq | xargs -I% bash -c 'cd "%" && golangci-lint run --fix *.go'
