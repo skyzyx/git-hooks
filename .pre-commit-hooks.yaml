@@ -94,10 +94,8 @@
   exclude_types:
     - shell
   args:
-    - --ignore
-    - node_modules
-    - --ignore
-    - .github
+    - --ignore=node_modules
+    - --ignore=.github
     - --fix
 
 - id: script-must-have-extension
