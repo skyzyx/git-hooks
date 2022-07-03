@@ -1,0 +1,139 @@
+.PHONY: tflint
+## tflint: [lint] runs `tflint` (formatting, value validation) against all Terraform (*.tf) code with a standardized set of rules
+tflint: clean-tests
+	@ echo " "
+	@ echo "=====> Running tflint..."
+	- find . -type d -name ".terraform" | xargs rm -Rf
+	GITHUB_TOKEN="" tflint --init
+	for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do \
+		cd "$$dir" && \
+			terraform init && \
+			tflint --config=$(current_dir).tflint.hcl . ; \
+		cd $(current_dir); \
+	done
+
+.PHONY: tfvalidate
+## tfvalidate: [lint] runs `terraform validate` (valid syntax) against all Terraform (*.tf) code
+tfvalidate: clean-tests
+	@ echo " "
+	@ echo "=====> Running terraform validate..."
+	terraform init && terraform validate
+	for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do \
+		cd "$$dir" && \
+			terraform init && \
+			terraform validate ; \
+		cd $(current_dir) ; \
+	done
+
+# Formats all Terraform code to its canonical format.
+.PHONY: fmt
+## fmt: [lint] runs `terraform fmt` (formatting) against all Terraform (*.tf) code
+fmt: clean-tests
+	@ echo " "
+	@ echo "=====> Running Terraform format..."
+	terraform fmt
+	for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do \
+		cd "$$dir" && \
+			terraform fmt ; \
+		cd $(current_dir) ; \
+	done
+
+.PHONY: tflint
+## tflint: [lint] runs `tflint` (formatting, value validation) against all Terraform (*.tf) code with a standardized set of rules
+tflint:
+	@ $(ECHO) " "
+	@ $(ECHO) "\033[1;33m=====> Running tflint...\033[0m"
+	- find . -type d -name ".terraform" | xargs rm -Rf
+	@ # for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do cd $$dir && tflint . && cd $(current_dir) ; done
+	tflint .
+
+.PHONY: tfvalidate
+## tfvalidate: [lint] runs `terraform validate` (valid syntax) against all Terraform (*.tf) code
+tfvalidate:
+	@ $(ECHO) " "
+	@ $(ECHO) "\033[1;33m=====> Running terraform validate...\033[0m"
+	terraform init -backend-config="key=aws-organization-paramstore/terraform-tfstate/abo" && terraform validate
+	@ # for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do cd $$dir && terraform init && terraform validate && cd $(current_dir) ; done
+
+# Formats all Terraform code to its canonical format.
+.PHONY: tffmt
+## tffmt: [lint] runs `terraform fmt` (formatting) against all Terraform (*.tf) code
+tffmt:
+	@ $(ECHO) " "
+	@ $(ECHO) "\033[1;33m=====> Running Terraform format...\033[0m"
+	terraform fmt
+	@ # for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do cd $$dir && terraform fmt && cd $(current_dir) ; done
+
+https://github.com/antonbabenko/pre-commit-terraform
+https://github.com/bridgecrewio/checkov
+https://github.com/terraform-docs/terraform-docs
+https://runterrascan.io
+https://github.com/terraform-linters/tflint
+https://aquasecurity.github.io/tfsec
+https://github.com/infracost/infracost
+https://github.com/minamijoyo/tfupdate
+https://github.com/minamijoyo/hcledit
+https://github.com/Yelp/detect-secrets
+https://github.com/python-jsonschema/check-jsonschema
+https://github.com/hadolint/hadolint
+https://github.com/kontrolilo/kontrolilo
+https://jorisroovers.com/gitlint/, https://github.com/jumanjihouse/pre-commit-hook-yamlfmt/blob/master/.gitlint
+https://github.com/siderolabs/conform
+https://docs.reposaur.com
+https://github.com/editorconfig-checker/editorconfig-checker
+https://codeql.github.com/docs/codeql-overview/supported-languages-and-frameworks/
+https://github.com/rhysd/actionlint
+https://github.com/Allyedge/allyignore
+
+## Unknown
+
+https://github.com/terraform-compliance/cli
+https://github.com/Checkmarx/kics
+https://github.com/fugue/regula
+https://github.com/flatt-security/shisho
+https://suzuki-shunsuke.github.io/tfaction/docs/
+https://github.com/tenable/terrascan
+https://github.com/newrelic/rusty-hog
+https://github.com/mrtazz/checkmake
+https://github.com/amperser/proselint/
+https://stoplight.io/open-source/spectral
+https://stylelint.io
+https://github.com/garethr/docker-label-inspector
+https://github.com/eliasgranderubio/dagda
+https://github.com/goreleaser/chglog
+https://github.com/dotenv-linter/dotenv-linter
+https://github.com/codespell-project/codespell
+https://github.com/banyanops/collector
+https://github.com/praetorian-inc/gokart
+https://retirejs.github.io/retire.js/
+https://pybowler.io
+https://eslint.org
+https://github.com/dlint-py/dlint
+https://github.com/PyCQA/flake8
+https://pyre-check.org
+https://github.com/Microsoft/pyright
+https://github.com/github/codeql
+https://semgrep.dev
+https://github.com/preslavmihaylov/todocheck
+https://github.com/deepfence/ThreatMapper
+https://github.com/aquasecurity/trivy
+https://github.com/aws-cloudformation/cloudformation-guard
+https://github.com/aws-cloudformation/cfn-lint
+https://github.com/stelligent/cfn_nag
+https://github.com/digitalocean/clusterlint
+https://alexjs.com
+https://www.openpolicyagent.org/docs/latest/policy-language/
+https://www.openpolicyagent.org/docs/latest/terraform/
+https://github.com/docker/docker-bench-security
+https://github.com/updatecli/updatecli
+https://github.com/Satthvik/truhog
+https://github.com/sigstore/cosign
+https://github.com/nikolaydubina/import-graph
+https://github.com/cbrgm/promcheck
+
+## Terraform
+
+https://github.com/cycloidio/terracognita
+https://github.com/mineiros-io/terramate
+https://terraspace.cloud
+https://github.com/pcasteran/terraform-graph-beautifier
