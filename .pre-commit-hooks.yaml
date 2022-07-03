@@ -57,8 +57,15 @@
   description: Statically analyze and lint Go code to catch potential errors.
   language: script
   entry: hooks/golangci-lint.sh
-  require_serial: false
+  require_serial: true
   files: \.go$
+
+- id: gomodupdate
+  name: Check go.mod for updates to any dependencies.
+  description: Check go.mod for updates to any dependencies.
+  language: script
+  entry: hooks/gomodupdate.sh
+  require_serial: false
 
 - id: script-must-have-extension
   name: Shell script filename ends in .sh
