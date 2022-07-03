@@ -21,8 +21,18 @@ if ! command -v golangci-lint > /dev/null 2>&1; then
     fi
 fi
 
+if ! command -v nproc > /dev/null 2>&1; then
+    if ! command -v brew > /dev/null 2>&1; then
+        echo 'Attempting to install coreutils from Homebrew...'
+        brew install coreutils
+    else
+        echo 'nproc needs to be installed.'
+        exit 1
+    fi
+fi
+
 # 1. Find all .go files.
 # 2. Find the directories of each of the .go files.
 # 3. Run golangci-lint on each of the directories.
 # 4. But only process a directory once.
-find "$PWD" -type f -name "*.go" -print0 | xargs -0 -I% dirname "%" | uniq | xargs -I% bash -c 'cd "%" && golangci-lint run --fix *.go'
+find "$PWD" -type f -name "*.go" -print0 | xargs -0 -I% dirname "%" | uniq | xargs -I% -P"$(nproc)" bash -c 'cd "%" && golangci-lint run --fix *.go'
