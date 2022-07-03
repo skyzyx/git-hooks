@@ -54,7 +54,8 @@
   description: Verifies that shell script filenames ends in .sh.
   language: script
   entry: hooks/script_must_have_extension.sh
-  types: [shell]
+  types:
+    - shell
 
 - id: shellcheck
   name: Test shell scripts with ShellCheck
@@ -62,9 +63,15 @@
   language: script
   entry: hooks/shellcheck.sh
   require_serial: false
-  types: [shell]
-  exclude_types: [csh, perl, python, ruby, tcsh, zsh]
-  files: \.sh$
+  types:
+    - shell
+  exclude_types:
+    - csh
+    - perl
+    - python
+    - ruby
+    - tcsh
+    - zsh
   args:
     - -e
     - SC1091
@@ -75,9 +82,15 @@
   language: script
   entry: hooks/shfmt.sh
   require_serial: false
-  types: [shell]
-  exclude_types: [csh, perl, python, ruby, tcsh, zsh]
-  files: \.sh$
+  types:
+    - shell
+  exclude_types:
+    - csh
+    - perl
+    - python
+    - ruby
+    - tcsh
+    - zsh
   args:
     - -s
     - -w
@@ -88,13 +101,31 @@
     - -ci
     - -sr
 
+- id: yamlfmt
+  name: Format YAML files
+  description: Format YAML files
+  entry: yamlfmt
+  language: python
+  types:
+    - yaml
+  args:
+    - --mapping
+    - "2"
+    - --sequence
+    - "4"
+    - --offset
+    - "2"
+    - --width
+    - "120"
+
 - id: yamllint
   name: Format YAML code with yamllint
   description: Reformat YAML files according to the standard format.
   language: python
   entry: yamllint
   require_serial: false
-  types: [file, yaml]
+  types:
+    - yaml
   args:
     - --format
     - parsable
@@ -106,8 +137,8 @@
   language: python
   entry: yapf
   require_serial: false
-  types: [python]
-  files: \.py$
+  types:
+    - python
   args:
     - --in-place
     - --recursive

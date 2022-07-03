@@ -1,6 +1,5 @@
 # The MIT License (MIT)
 
-Copyright (c) Chase Pierce <syntaqx@gmail.com> \
 Copyright (c) Ryan Parman <ryan@ryanparman.com>
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
@@ -20,3 +19,9 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
+
+## Other code used under the terms of the MIT license
+
+* <https://github.com/jumanjihouse/pre-commit-hook-yamlfmt/blob/master/LICENSE>
+* <https://github.com/jumanjihouse/pre-commit-hooks/blob/master/LICENSE>
+* <https://github.com/pre-commit/mirrors-yapf/blob/main/LICENSE>
