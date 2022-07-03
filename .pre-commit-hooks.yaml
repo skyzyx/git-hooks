@@ -96,6 +96,8 @@
   args:
     - --ignore
     - node_modules
+    - --ignore
+    - pre-commit
     - --fix
 
 - id: script-must-have-extension
