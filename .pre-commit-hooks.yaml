@@ -67,6 +67,13 @@
   entry: hooks/gomodupdate.sh
   require_serial: false
 
+- id: go-consistent
+  name: Check for consistent Go patterns in the code.
+  description: Check for consistent Go patterns in the code.
+  language: script
+  entry: hooks/go-consistent.sh
+  require_serial: false
+
 - id: script-must-have-extension
   name: Shell script filename ends in .sh
   description: Verifies that shell script filenames ends in .sh.
