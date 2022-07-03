@@ -7,7 +7,7 @@ if [ "${DEBUG}" != unset ]; then
 fi
 
 # shellcheck disable=SC1091
-source __install_go.sh
+source ./__install_go.sh
 
 if ! command -v gofumpt > /dev/null 2>&1; then
     echo 'This check needs gofumpt from https://github.com/mvdan/gofumpt.'
