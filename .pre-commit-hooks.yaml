@@ -58,7 +58,6 @@
   language: script
   entry: hooks/golangci-lint.sh
   require_serial: true
-  files: \.go$
 
 - id: gomodupdate
   name: Check go.mod for updates to any dependencies
@@ -91,6 +90,7 @@
   language: script
   entry: hooks/markdownlint.sh
   require_serial: false
+  files: \.(md|mdown|markdown)$
   args:
     - --ignore
     - node_modules
