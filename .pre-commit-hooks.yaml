@@ -102,8 +102,8 @@
 - id: yamlfmt
   name: Format YAML files
   description: Format YAML files
-  entry: yamlfmt
-  language: python
+  entry: ./yamlfmt
+  language: shell
   types:
     - yaml
   args:
