@@ -90,7 +90,9 @@
   language: script
   entry: hooks/markdownlint.sh
   require_serial: false
-  files: \.(md|mdown)$
+  files: \.(md|mdown|markdown)$
+  exclude_types:
+    - shell
   args:
     - --ignore
     - node_modules
