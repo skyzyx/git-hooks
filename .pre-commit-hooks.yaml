@@ -102,7 +102,7 @@
 - id: yamlfmt
   name: Format YAML files
   description: Format YAML files
-  entry: yamlfmt
+  entry: hooks/yamlfmt.py
   language: python
   types:
     - yaml
