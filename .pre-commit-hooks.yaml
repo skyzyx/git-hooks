@@ -61,18 +61,36 @@
   files: \.go$
 
 - id: gomodupdate
-  name: Check go.mod for updates to any dependencies.
+  name: Check go.mod for updates to any dependencies
   description: Check go.mod for updates to any dependencies.
   language: script
   entry: hooks/gomodupdate.sh
   require_serial: false
+  args:
+    - -update
+    - -direct
+    - -style=markdown
 
 - id: go-consistent
-  name: Check for consistent Go patterns in the code.
+  name: Check for consistent Go patterns in the code
   description: Check for consistent Go patterns in the code.
   language: script
   entry: hooks/go-consistent.sh
   require_serial: false
+  args:
+    - -v
+    - ./...
+
+- id: goconst
+  name: Check Go files for opportunities to turn strings into constants
+  description: Check Go files for opportunities to turn strings into constants.
+  language: script
+  entry: hooks/goconst.sh
+  require_serial: false
+  args:
+    - -match-constant
+    - -numbers
+    - ./...
 
 - id: script-must-have-extension
   name: Shell script filename ends in .sh

@@ -16,4 +16,4 @@ if ! command -v go-mod-outdated > /dev/null 2>&1; then
     go install github.com/psampaz/go-mod-outdated@latest
 fi
 
-go list -u -m -json all | go-mod-outdated -update -direct -style markdown
+go list -u -m -json all | go-mod-outdated "$@"
