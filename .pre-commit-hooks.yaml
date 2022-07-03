@@ -94,10 +94,8 @@
   args:
     - -s
     - -w
-    - -ln
-    - bash
-    - -i
-    - "4"
+    - -ln=bash
+    - -i=4
     - -ci
     - -sr
 
@@ -109,14 +107,10 @@
   types:
     - yaml
   args:
-    - --mapping
-    - "2"
-    - --sequence
-    - "4"
-    - --offset
-    - "2"
-    - --width
-    - "120"
+    - --mapping=2
+    - --sequence=4
+    - --offset=2
+    - --width=120
 
 - id: yamllint
   name: Format YAML code with yamllint
@@ -127,8 +121,7 @@
   types:
     - yaml
   args:
-    - --format
-    - parsable
+    - --format=parsable
     - --strict
 
 - id: yapf
