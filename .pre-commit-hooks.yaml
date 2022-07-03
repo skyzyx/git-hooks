@@ -85,6 +85,17 @@
   entry: hooks/goconst.sh
   require_serial: false
 
+- id: markdownlint
+  name: Statically analyze Markdown documents using markdownlint-cli
+  description: Statically analyze Markdown documents using markdownlint-cli.
+  language: script
+  entry: hooks/markdownlint.sh
+  require_serial: false
+  args:
+    - --ignore
+    - node_modules
+    - --fix
+
 - id: script-must-have-extension
   name: Shell script filename ends in .sh
   description: Verifies that shell script filenames ends in .sh.
