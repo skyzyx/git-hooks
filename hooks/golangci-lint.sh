@@ -21,4 +21,5 @@ if ! command -v golangci-lint > /dev/null 2>&1; then
     fi
 fi
 
-golangci-lint "$@"
+golangci-lint run --fix ./*.go
+golangci-lint run --fix ./**/*.go

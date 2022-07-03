@@ -59,9 +59,6 @@
   entry: hooks/golangci-lint.sh
   require_serial: false
   files: \.go$
-  args:
-    - run
-    - --fix
 
 - id: script-must-have-extension
   name: Shell script filename ends in .sh
