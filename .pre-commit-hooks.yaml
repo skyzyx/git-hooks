@@ -97,7 +97,7 @@
     - --ignore
     - node_modules
     - --ignore
-    - pre-commit
+    - .github
     - --fix
 
 - id: script-must-have-extension
