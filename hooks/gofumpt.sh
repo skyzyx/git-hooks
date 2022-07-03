@@ -6,7 +6,7 @@ if [ "${DEBUG}" != unset ]; then
     set -x
 fi
 
-curr_dir="$(basename "$(realpath "$0")")"
+curr_dir="$(dirname "$(realpath "$0")")"
 
 # shellcheck disable=SC1091
 source "${curr_dir}/__install_go.sh"
