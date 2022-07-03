@@ -16,4 +16,4 @@ if ! command -v goconst > /dev/null 2>&1; then
     go install github.com/jgautheron/goconst/cmd/goconst@latest
 fi
 
-goconst "$@"
+goconst -match-constant -numbers ./...

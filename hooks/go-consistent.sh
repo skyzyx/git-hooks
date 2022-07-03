@@ -16,4 +16,4 @@ if ! command -v go-consistent > /dev/null 2>&1; then
     go install github.com/quasilyte/go-consistent@latest
 fi
 
-go-consistent "$@"
+go-consistent -v ./...

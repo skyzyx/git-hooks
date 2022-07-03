@@ -77,9 +77,6 @@
   language: script
   entry: hooks/go-consistent.sh
   require_serial: false
-  args:
-    - -v
-    - ./...
 
 - id: goconst
   name: Check Go files for opportunities to turn strings into constants
@@ -87,10 +84,6 @@
   language: script
   entry: hooks/goconst.sh
   require_serial: false
-  args:
-    - -match-constant
-    - -numbers
-    - ./...
 
 - id: script-must-have-extension
   name: Shell script filename ends in .sh
