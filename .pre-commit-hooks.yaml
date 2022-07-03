@@ -52,6 +52,17 @@
   args:
     - -w
 
+- id: golangci-lint
+  name: Statically analyze Go code using golangci-lint
+  description: Statically analyze and lint Go code to catch potential errors.
+  language: script
+  entry: hooks/golangci-lint.sh
+  require_serial: false
+  files: \.go$
+  args:
+    - run
+    - --fix
+
 - id: script-must-have-extension
   name: Shell script filename ends in .sh
   description: Verifies that shell script filenames ends in .sh.
