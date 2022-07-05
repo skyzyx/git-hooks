@@ -161,7 +161,7 @@
   language: script
   entry: hooks/terrascan.sh
   require_serial: true
-  files: \.tf(vars)$
+  files: \.tf$
   args:
     - --use-colors=auto
     - --policy-type=aws,github
