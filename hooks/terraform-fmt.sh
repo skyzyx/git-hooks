@@ -28,4 +28,4 @@ find "$PWD" -type d -name ".terraform" | xargs rm -Rf
 find "$PWD" -type f -name "*.tf" -print0 |
     xargs -0 -I% dirname "%" |
     uniq |
-    xargs -I% bash -c 'cd "%" && terraform init && terraform fmt'
+    xargs -I% bash -c 'cd "%" && terraform fmt'
