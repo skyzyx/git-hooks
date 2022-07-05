@@ -16,9 +16,5 @@ if ! command -v tfsec > /dev/null 2>&1; then
     fi
 fi
 
-# Clean all .terraform/ directories. They conflict with running tflint.
-# shellcheck disable=2038
-find "$PWD" -type d -name ".terraform" | xargs rm -Rf
-
-echo "$PWD"
+echo "$CWD"
 tfsec --concise-output --config-file .tfsec.yml --exclude-downloaded-modules "$PWD"
