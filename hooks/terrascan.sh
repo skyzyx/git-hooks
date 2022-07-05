@@ -16,4 +16,4 @@ if ! command -v terrascan > /dev/null 2>&1; then
     fi
 fi
 
-terrascan scan "$@"
+terrascan scan --use-colors=auto --policy-type=aws,github --non-recursive --iac-type=terraform --iac-dir .

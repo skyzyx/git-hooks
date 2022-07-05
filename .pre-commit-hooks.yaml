@@ -148,12 +148,23 @@
     - -ci
     - -sr
 
+- id: terraform-fmt
+  name: Format Terraform code with `terraform fmt`
+  description: Reformat Terraform files according to the standard format.
+  language: script
+  entry: hooks/terraform-fmt.sh
+  require_serial: true
+  files: \.tf$
+  exclude: \.terraform\/.*$
+
 - id: terraform-validate
   name: Statically analyze Terraform code using `terraform validate` (not recursive)
   description: Statically analyze and lint Terraform code to catch potential errors.
   language: script
   entry: hooks/terraform-validate.sh
   require_serial: true
+  files: \.tf$
+  exclude: \.terraform\/.*$
 
 - id: terrascan
   name: Statically analyze Terraform code using `terrascan` (by file)
@@ -162,18 +173,16 @@
   entry: hooks/terrascan.sh
   require_serial: true
   files: \.tf$
-  args:
-    - --use-colors=auto
-    - --policy-type=aws,github
-    - --iac-type=terraform
-    - --iac-file
+  exclude: \.terraform\/.*$
 
-- id: tflint
+- id: tflint-single-dir
   name: Statically analyze Terraform code using `tflint` (not recursive)
   description: Statically analyze and lint Terraform code as defined in `.tflint.hcl`.
   language: script
-  entry: hooks/tflint.sh
+  entry: hooks/tflint_single_dir.sh
   require_serial: true
+  files: \.tf$
+  exclude: \.terraform\/.*$
 
 - id: tfsec
   name: Statically analyze Terraform code using `tfsec` (recursive)
@@ -181,6 +190,8 @@
   language: script
   entry: hooks/tfsec.sh
   require_serial: true
+  files: \.tf$
+  exclude: \.terraform\/.*$
 
 - id: yamlfmt
   name: Format YAML files using `yamlfmt`
