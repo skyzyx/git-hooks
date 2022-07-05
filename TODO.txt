@@ -1,8 +1,6 @@
 https://github.com/antonbabenko/pre-commit-terraform
 https://github.com/bridgecrewio/checkov
 https://github.com/terraform-docs/terraform-docs
-https://runterrascan.io
-https://aquasecurity.github.io/tfsec
 https://github.com/infracost/infracost
 https://github.com/minamijoyo/tfupdate
 https://github.com/minamijoyo/hcledit

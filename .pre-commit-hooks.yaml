@@ -155,6 +155,18 @@
   entry: hooks/terraform-validate.sh
   require_serial: true
 
+- id: terrascan
+  name: Statically analyze Terraform code using `terrascan` (by file)
+  description: Statically analyze and lint Terraform code to catch potential errors.
+  language: script
+  entry: hooks/terrascan.sh
+  require_serial: true
+  args:
+    - --use-colors=auto
+    - --policy-type=aws,github
+    - --iac-type=terraform
+    - --iac-file
+
 - id: tflint
   name: Statically analyze Terraform code using `tflint` (not recursive)
   description: Statically analyze and lint Terraform code as defined in `.tflint.hcl`.
