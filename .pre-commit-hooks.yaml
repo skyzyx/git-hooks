@@ -77,13 +77,6 @@
   entry: hooks/go-consistent.sh
   require_serial: false
 
-- id: goconst
-  name: Check Go files for opportunities to turn strings into constants
-  description: Check Go files for opportunities to turn strings into constants.
-  language: script
-  entry: hooks/goconst.sh
-  require_serial: false
-
 - id: markdownlint
   name: Statically analyze Markdown documents using `markdownlint-cli`
   description: Statically analyze Markdown documents using markdownlint-cli.
