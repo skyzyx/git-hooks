@@ -161,8 +161,6 @@
   language: script
   entry: hooks/tflint.sh
   require_serial: true
-  args:
-    - .
 
 - id: tfsec
   name: Statically analyze Terraform code using `tfsec`
@@ -170,12 +168,6 @@
   language: script
   entry: hooks/tfsec.sh
   require_serial: true
-  args:
-    - --concise-output
-    - --config-file=.tfsec.yml
-    - --exclude-downloaded-modules
-    - --force-all-dirs
-    - .
 
 - id: yamlfmt
   name: Format YAML files using `yamlfmt`

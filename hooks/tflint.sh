@@ -42,4 +42,4 @@ GITHUB_TOKEN="" tflint --init
 terraform init
 
 # Run tflint over the whole directory.
-tflint "$@"
+tflint .

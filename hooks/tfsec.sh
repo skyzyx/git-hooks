@@ -20,4 +20,4 @@ fi
 # shellcheck disable=2038
 find "$PWD" -type d -name ".terraform" | xargs rm -Rf
 
-tfsec "$@"
+tfsec --concise-output --config-file=.tfsec.yml --exclude-downloaded-modules --force-all-dirs .
