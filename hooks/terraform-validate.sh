@@ -25,7 +25,8 @@ fi
 # shellcheck disable=2038
 find "$PWD" -type d -name ".terraform" | xargs rm -Rf
 
-find "$PWD" -type f -name "*.tf" -print0 |
-    xargs -0 -I% dirname "%" |
-    uniq |
-    xargs -I% bash -c 'cd "%" && terraform init && terraform validate'
+# Initialize Terraform.
+terraform init
+
+# Run over the whole directory.
+terraform validate
