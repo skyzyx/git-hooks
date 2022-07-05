@@ -16,5 +16,4 @@ if ! command -v tfsec > /dev/null 2>&1; then
     fi
 fi
 
-echo "$(realpath .)"
-tfsec --concise-output --config-file .tfsec.yml --exclude-downloaded-modules "$PWD"
+tfsec --concise-output --config-file .tfsec.yml --exclude-downloaded-modules --force-all-dirs .
