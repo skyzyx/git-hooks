@@ -25,9 +25,6 @@ fi
 # shellcheck disable=2038
 find "$PWD" -type d -name ".terraform" | xargs rm -Rf
 
-# Initialize tflint.
-GITHUB_TOKEN="" tflint --init
-
 # Initialize Terraform.
 terraform init
 

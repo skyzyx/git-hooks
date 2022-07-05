@@ -1,47 +1,7 @@
-# Formats all Terraform code to its canonical format.
-.PHONY: fmt
-## fmt: [lint] runs `terraform fmt` (formatting) against all Terraform (*.tf) code
-fmt: clean-tests
-	@ echo " "
-	@ echo "=====> Running Terraform format..."
-	terraform fmt
-	for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do \
-		cd "$$dir" && \
-			terraform fmt ; \
-		cd $(current_dir) ; \
-	done
-
-.PHONY: tflint
-## tflint: [lint] runs `tflint` (formatting, value validation) against all Terraform (*.tf) code with a standardized set of rules
-tflint:
-	@ $(ECHO) " "
-	@ $(ECHO) "\033[1;33m=====> Running tflint...\033[0m"
-	- find . -type d -name ".terraform" | xargs rm -Rf
-	@ # for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do cd $$dir && tflint . && cd $(current_dir) ; done
-	tflint .
-
-.PHONY: tfvalidate
-## tfvalidate: [lint] runs `terraform validate` (valid syntax) against all Terraform (*.tf) code
-tfvalidate:
-	@ $(ECHO) " "
-	@ $(ECHO) "\033[1;33m=====> Running terraform validate...\033[0m"
-	terraform init -backend-config="key=aws-organization-paramstore/terraform-tfstate/abo" && terraform validate
-	@ # for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do cd $$dir && terraform init && terraform validate && cd $(current_dir) ; done
-
-# Formats all Terraform code to its canonical format.
-.PHONY: tffmt
-## tffmt: [lint] runs `terraform fmt` (formatting) against all Terraform (*.tf) code
-tffmt:
-	@ $(ECHO) " "
-	@ $(ECHO) "\033[1;33m=====> Running Terraform format...\033[0m"
-	terraform fmt
-	@ # for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do cd $$dir && terraform fmt && cd $(current_dir) ; done
-
 https://github.com/antonbabenko/pre-commit-terraform
 https://github.com/bridgecrewio/checkov
 https://github.com/terraform-docs/terraform-docs
 https://runterrascan.io
-https://github.com/terraform-linters/tflint
 https://aquasecurity.github.io/tfsec
 https://github.com/infracost/infracost
 https://github.com/minamijoyo/tfupdate
