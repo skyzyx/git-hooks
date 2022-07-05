@@ -8,11 +8,11 @@ fi
 
 if ! command -v golangci-lint > /dev/null 2>&1; then
     if ! command -v brew > /dev/null 2>&1; then
-        echo 'Attempting to install golangci-lint from Homebrew...'
-        brew install golangci/tap/golangci-lint
-    else
         echo 'golangci-lint needs to be installed from https://github.com/golangci/golangci-lint.'
         exit 1
+    else
+        echo 'Attempting to install golangci-lint from Homebrew...'
+        brew install golangci/tap/golangci-lint
     fi
 fi
 

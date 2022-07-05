@@ -8,11 +8,11 @@ fi
 
 if ! command -v shellcheck > /dev/null 2>&1; then
     if ! command -v brew > /dev/null 2>&1; then
-        echo 'Attempting to install shellcheck from Homebrew...'
-        brew install shellcheck
-    else
         echo 'shellcheck needs to be installed from https://github.com/koalaman/shellcheck.'
         exit 1
+    else
+        echo 'Attempting to install shellcheck from Homebrew...'
+        brew install shellcheck
     fi
 fi
 

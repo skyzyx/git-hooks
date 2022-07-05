@@ -6,16 +6,6 @@ if [ "${DEBUG}" != unset ]; then
     set -x
 fi
 
-if ! command -v tflint > /dev/null 2>&1; then
-    if ! command -v brew > /dev/null 2>&1; then
-        echo 'tflint needs to be installed from https://github.com/terraform-linters/tflint.'
-        exit 1
-    else
-        echo 'Attempting to install tflint from Homebrew...'
-        brew install tflint
-    fi
-fi
-
 if ! command -v terraform > /dev/null 2>&1; then
     if ! command -v tfswitch > /dev/null 2>&1; then
         if ! command -v brew > /dev/null 2>&1; then
@@ -42,4 +32,4 @@ GITHUB_TOKEN="" tflint --init
 terraform init
 
 # Run tflint over the whole directory.
-tflint .
+terraform validate

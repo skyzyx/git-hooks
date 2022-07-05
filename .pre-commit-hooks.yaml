@@ -148,6 +148,13 @@
     - -ci
     - -sr
 
+- id: terraform-validate
+  name: Statically analyze Terraform code using `terraform validate`
+  description: Statically analyze and lint Terraform code to catch potential errors.
+  language: script
+  entry: hooks/terraform-validate.sh
+  require_serial: true
+
 - id: tflint
   name: Statically analyze Terraform code using tflint
   description: Statically analyze and lint Terraform code to catch potential errors.
