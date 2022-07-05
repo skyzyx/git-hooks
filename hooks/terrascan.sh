@@ -16,4 +16,7 @@ if ! command -v terrascan > /dev/null 2>&1; then
     fi
 fi
 
-terrascan scan --use-colors=auto --policy-type=aws,github --non-recursive --iac-type=terraform --iac-dir .
+find "$PWD" -type f -name "*.tf" -print0 |
+    xargs -0 -I% dirname "%" |
+    uniq |
+    xargs -I% bash -c 'cd "%" && terrascan scan --use-colors=auto --policy-type=aws,github --non-recursive --iac-type=terraform --iac-dir .'
