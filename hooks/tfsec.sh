@@ -6,6 +6,8 @@ if [ "${DEBUG}" != unset ]; then
     set -x
 fi
 
+curr_dir="$(dirname "$(realpath "$0")")"
+
 if ! command -v tfsec > /dev/null 2>&1; then
     if ! command -v brew > /dev/null 2>&1; then
         echo 'tfsec needs to be installed from https://github.com/aquasecurity/tfsec.'
@@ -20,4 +22,4 @@ fi
 # shellcheck disable=2038
 find "$PWD" -type d -name ".terraform" | xargs rm -Rf
 
-tfsec --concise-output --config-file=.tfsec.yml --exclude-downloaded-modules --force-all-dirs .
+tfsec --concise-output --config-file "${curr_dir}/.tfsec.yml" --exclude-downloaded-modules --force-all-dirs .
