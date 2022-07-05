@@ -19,4 +19,4 @@ fi
 find "$PWD" -type f -name "*.tf" -print0 |
     xargs -0 -I% dirname "%" |
     uniq |
-    xargs -I% bash -c 'cd "%" && terrascan scan --use-colors=auto --policy-type=aws,github --non-recursive --iac-type=terraform --iac-dir .'
+    xargs -I% bash -c 'cd "%" && terrascan scan --use-colors=auto --policy-type=aws,github --non-recursive --iac-type=terraform --iac-dir '"$PWD"
