@@ -31,5 +31,6 @@ GITHUB_TOKEN="" tflint --init
 # Initialize Terraform.
 terraform init
 
-# Run tflint over the whole directory.
+# Run over the whole directory.
+terraform fmt
 terraform validate

@@ -43,7 +43,7 @@
   require_serial: false
 
 - id: gofumpt
-  name: Format Go code using gofumpt
+  name: Format Go code using `gofumpt`
   description: Reformat the Go code according to the standard format.
   language: script
   entry: hooks/gofumpt.sh
@@ -53,14 +53,14 @@
     - -w
 
 - id: golangci-lint
-  name: Statically analyze Go code using golangci-lint
+  name: Statically analyze Go code using `golangci-lint`
   description: Statically analyze and lint Go code to catch potential errors.
   language: script
   entry: hooks/golangci-lint.sh
   require_serial: true
 
 - id: gomodupdate
-  name: Check go.mod for updates to any dependencies
+  name: Check `go.mod` for updates to any dependencies
   description: Check go.mod for updates to any dependencies.
   language: script
   entry: hooks/gomodupdate.sh
@@ -85,7 +85,7 @@
   require_serial: false
 
 - id: markdownlint
-  name: Statically analyze Markdown documents using markdownlint-cli
+  name: Statically analyze Markdown documents using `markdownlint-cli`
   description: Statically analyze Markdown documents using markdownlint-cli.
   language: script
   entry: hooks/markdownlint.sh
@@ -99,7 +99,7 @@
     - --fix
 
 - id: script-must-have-extension
-  name: Shell script filename ends in .sh
+  name: Shell script filename ends in `.sh`
   description: Verifies that shell script filenames ends in .sh.
   language: script
   entry: hooks/script_must_have_extension.sh
@@ -107,7 +107,7 @@
     - shell
 
 - id: shellcheck
-  name: Test shell scripts with ShellCheck
+  name: Test shell scripts with `shellcheck`
   description: Run ShellCheck over the file to identify poor practices or potential problems.
   language: script
   entry: hooks/shellcheck.sh
@@ -126,7 +126,7 @@
     - SC1091
 
 - id: shfmt
-  name: Format shell scripts with shfmt
+  name: Format shell scripts with `shfmt`
   description: Reformat the shell scripts according to the standard format.
   language: script
   entry: hooks/shfmt.sh
@@ -156,15 +156,15 @@
   require_serial: true
 
 - id: tflint
-  name: Statically analyze Terraform code using tflint
-  description: Statically analyze and lint Terraform code to catch potential errors.
+  name: Statically analyze Terraform code using `tflint`
+  description: Statically analyze and lint Terraform code as defined in `.tflint.hcl`.
   language: script
   entry: hooks/tflint.sh
   require_serial: true
 
 - id: yamlfmt
-  name: Format YAML files
-  description: Format YAML files
+  name: Format YAML files using `yamlfmt`
+  description: Format YAML files using yamlfmt.
   entry: ./yamlfmt
   language: script
   types:
@@ -176,7 +176,7 @@
     - --width=120
 
 - id: yamllint
-  name: Format YAML code with yamllint
+  name: Format YAML code with `yamllint`
   description: Reformat YAML files according to the standard format.
   language: python
   entry: yamllint
@@ -188,8 +188,8 @@
     - --strict
 
 - id: yapf
-  name: Format Python code with yapf
-  description: Reformat Python code according to the standard format defined in .style.yapf.
+  name: Format Python code with `yapf`
+  description: Reformat Python code according to the standard format defined in `.style.yapf`.
   language: python
   entry: yapf
   require_serial: false

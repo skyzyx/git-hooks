@@ -1,16 +1,3 @@
-.PHONY: tfvalidate
-## tfvalidate: [lint] runs `terraform validate` (valid syntax) against all Terraform (*.tf) code
-tfvalidate: clean-tests
-	@ echo " "
-	@ echo "=====> Running terraform validate..."
-	terraform init && terraform validate
-	for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do \
-		cd "$$dir" && \
-			terraform init && \
-			terraform validate ; \
-		cd $(current_dir) ; \
-	done
-
 # Formats all Terraform code to its canonical format.
 .PHONY: fmt
 ## fmt: [lint] runs `terraform fmt` (formatting) against all Terraform (*.tf) code
