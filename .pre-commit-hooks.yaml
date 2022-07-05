@@ -149,21 +149,21 @@
     - -sr
 
 - id: terraform-validate
-  name: Statically analyze Terraform code using `terraform validate`
+  name: Statically analyze Terraform code using `terraform validate` (not recursive)
   description: Statically analyze and lint Terraform code to catch potential errors.
   language: script
   entry: hooks/terraform-validate.sh
   require_serial: true
 
 - id: tflint
-  name: Statically analyze Terraform code using `tflint`
+  name: Statically analyze Terraform code using `tflint` (not recursive)
   description: Statically analyze and lint Terraform code as defined in `.tflint.hcl`.
   language: script
   entry: hooks/tflint.sh
   require_serial: true
 
 - id: tfsec
-  name: Statically analyze Terraform code using `tfsec`
+  name: Statically analyze Terraform code using `tfsec` (recursive)
   description: Statically analyze and lint Terraform code as defined in `.tfsec.yml`.
   language: script
   entry: hooks/tfsec.sh
