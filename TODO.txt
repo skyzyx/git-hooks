@@ -1,17 +1,3 @@
-.PHONY: tflint
-## tflint: [lint] runs `tflint` (formatting, value validation) against all Terraform (*.tf) code with a standardized set of rules
-tflint: clean-tests
-	@ echo " "
-	@ echo "=====> Running tflint..."
-	- find . -type d -name ".terraform" | xargs rm -Rf
-	GITHUB_TOKEN="" tflint --init
-	for dir in $$(find tests/ -type f -name "*.tf" | xargs -I% dirname % | uniq); do \
-		cd "$$dir" && \
-			terraform init && \
-			tflint --config=$(current_dir).tflint.hcl . ; \
-		cd $(current_dir); \
-	done
-
 .PHONY: tfvalidate
 ## tfvalidate: [lint] runs `terraform validate` (valid syntax) against all Terraform (*.tf) code
 tfvalidate: clean-tests

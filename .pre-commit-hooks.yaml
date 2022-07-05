@@ -148,6 +148,13 @@
     - -ci
     - -sr
 
+- id: tflint
+  name: Statically analyze Terraform code using tflint
+  description: Statically analyze and lint Terraform code to catch potential errors.
+  language: script
+  entry: hooks/tflint.sh
+  require_serial: true
+
 - id: yamlfmt
   name: Format YAML files
   description: Format YAML files
