@@ -11,4 +11,4 @@ if ! command -v checkov > /dev/null 2>&1; then
     pip3 install checkov
 fi
 
-checkov --directory . --framework terraform --quiet --compact
+checkov --directory . --framework terraform --quiet --compact --create-config .checkov.yml
