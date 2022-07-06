@@ -38,15 +38,11 @@
 - id: checkov
   name: Statically analyze Terraform code using `checkov` (not recursive)
   description: Statically analyze and lint Terraform code to catch potential errors.
-  language: python
-  entry: checkov
+  language: script
+  entry: hooks/checkov.sh
   require_serial: false
   files: \.tf$
   exclude: \.terraform\/.*$
-  args:
-    - --directory=.
-    - --framework=terraform
-    - --quiet
 
 - id: git-check
   name: Check for conflict markers and core.whitespace errors
