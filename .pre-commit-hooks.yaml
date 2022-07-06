@@ -150,11 +150,11 @@
   files: \.tf$
   exclude: \.terraform\/.*$
 
-- id: terraform-validate
+- id: terraform-validate-single-dir
   name: Statically analyze Terraform code using `terraform validate` (not recursive)
   description: Statically analyze and lint Terraform code to catch potential errors.
   language: script
-  entry: hooks/terraform-validate.sh
+  entry: hooks/terraform-validate-single-dir.sh
   require_serial: true
   files: \.tf$
   exclude: \.terraform\/.*$
@@ -172,7 +172,7 @@
   name: Statically analyze Terraform code using `tflint` (not recursive)
   description: Statically analyze and lint Terraform code as defined in `.tflint.hcl`.
   language: script
-  entry: hooks/tflint_single_dir.sh
+  entry: hooks/tflint-single-dir.sh
   require_serial: true
   files: \.tf$
   exclude: \.terraform\/.*$
