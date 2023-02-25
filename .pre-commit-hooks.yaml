@@ -218,7 +218,6 @@
     - yaml
   args:
     - --format=parsable
-    - --config-file .yamllint
     - --strict
 
 - id: yapf
